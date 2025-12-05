@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="units">Единицы измерения</string>
+    <string name="formulas">Формулы</string>
+    <string name="app_name">SimpleConverter</string>
+</resources>

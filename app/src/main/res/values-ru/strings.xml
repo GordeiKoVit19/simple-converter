@@ -1,7 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">SimpleConverter</string>
     <string name="units">Единицы измерения</string>
     <string name="formulas">Формулы</string>
-    <string name="app_name">SimpleConverter</string>
+
+    <string name="hint_enter_value">Введите число</string>
+    <string name="button_convert">Конвертировать</string>
+    <string name="text_result">Результат</string>
+
+    <string-array name="units_list">
+        <item>Метры → Сантиметры</item>
+        <item>Сантиметры → Метры</item>
+        <item>Минуты → Секунды</item>
+        <item>Секунды → Минуты</item>
+    </string-array>
 </resources>

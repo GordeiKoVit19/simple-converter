@@ -1,6 +1,16 @@
 <resources>
-
+    <string name="app_name">SimpleConverter</string>
     <string name="units">Units</string>
-    <string name="formulas">Formulas\n</string>
-    <string name="app_name">SimpleConverter\n</string>
+    <string name="formulas">Formulas</string>
+
+    <string name="hint_enter_value">Enter number</string>
+    <string name="button_convert">Convert</string>
+    <string name="text_result">Result</string>
+
+    <string-array name="units_list">
+        <item>Meters → Centimeters</item>
+        <item>Centimeters → Meters</item>
+        <item>Minutes → Seconds</item>
+        <item>Seconds → Minutes</item>
+    </string-array>
 </resources>

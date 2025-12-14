@@ -6,6 +6,7 @@
     <string name="hint_enter_value">Введите число</string>
     <string name="button_convert">Конвертировать</string>
     <string name="text_result">Результат</string>
+    <string name="back">Назад</string>
 
     <string-array name="units_list">
         <item>Метры → Сантиметры</item>

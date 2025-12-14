@@ -6,6 +6,7 @@
     <string name="hint_enter_value">Enter number</string>
     <string name="button_convert">Convert</string>
     <string name="text_result">Result</string>
+    <string name="back">Back\n</string>
 
     <string-array name="units_list">
         <item>Meters → Centimeters</item>

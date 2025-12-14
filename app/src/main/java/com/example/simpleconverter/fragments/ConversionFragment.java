@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.simpleconverter.R;
@@ -24,23 +26,38 @@ public class ConversionFragment extends Fragment {
         return fragment;
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState
+    ) {
         View view = inflater.inflate(R.layout.fragment_conversion, container, false);
 
-        String unit = getArguments() != null ? getArguments().getString(ARG_UNIT) : "";
+        String unit = "";
+        if (getArguments() != null) {
+            unit = getArguments().getString(ARG_UNIT);
+        }
 
         EditText input = view.findViewById(R.id.editTextValue);
-        Button button = view.findViewById(R.id.buttonConvert);
+        Button convertButton = view.findViewById(R.id.buttonConvert);
+        Button backButton = view.findViewById(R.id.buttonBack);
         TextView result = view.findViewById(R.id.textViewResult);
 
-        button.setOnClickListener(v -> {
+        String finalUnit = unit;
+        convertButton.setOnClickListener(v -> {
             if (!input.getText().toString().isEmpty()) {
                 double value = Double.parseDouble(input.getText().toString());
-                double converted = convertValue(unit, value);
+                double converted = convertValue(finalUnit, value);
                 result.setText(String.valueOf(converted));
             }
+        });
+
+        backButton.setOnClickListener(v -> {
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .popBackStack();
         });
 
         return view;
@@ -51,15 +68,19 @@ public class ConversionFragment extends Fragment {
             case "Метры → Сантиметры":
             case "Meters → Centimeters":
                 return value * 100;
+
             case "Сантиметры → Метры":
             case "Centimeters → Meters":
                 return value / 100;
+
             case "Минуты → Секунды":
             case "Minutes → Seconds":
                 return value * 60;
+
             case "Секунды → Минуты":
             case "Seconds → Minutes":
                 return value / 60;
+
             default:
                 return value;
         }

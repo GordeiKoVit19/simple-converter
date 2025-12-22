@@ -14,4 +14,12 @@
         <item>Минуты → Секунды</item>
         <item>Секунды → Минуты</item>
     </string-array>
+
+    <string-array name="formulas_list">
+        <item>Площадь квадрата</item>
+        <item>Периметр квадрата</item>
+        <item>Площадь прямоугольника</item>
+        <item>Периметр прямоугольника</item>
+    </string-array>
+
 </resources>

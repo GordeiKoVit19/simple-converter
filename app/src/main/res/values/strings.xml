@@ -14,4 +14,12 @@
         <item>Minutes → Seconds</item>
         <item>Seconds → Minutes</item>
     </string-array>
+
+    <string-array name="formulas_list">
+        <item>Square Area</item>
+        <item>Square Perimeter</item>
+        <item>Rectangle Area</item>
+        <item>Rectangle Perimeter</item>
+    </string-array>
+
 </resources>

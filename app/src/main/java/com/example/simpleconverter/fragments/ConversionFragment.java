@@ -40,49 +40,65 @@ public class ConversionFragment extends Fragment {
             unit = getArguments().getString(ARG_UNIT);
         }
 
-        EditText input = view.findViewById(R.id.editTextValue);
+        EditText input1 = view.findViewById(R.id.editTextValue1);
+        EditText input2 = view.findViewById(R.id.editTextValue2);
         Button convertButton = view.findViewById(R.id.buttonConvert);
         Button backButton = view.findViewById(R.id.buttonBack);
         TextView result = view.findViewById(R.id.textViewResult);
 
+        if (unit.equals("Площадь прямоугольника") || unit.equals("Периметр прямоугольника")
+                || unit.equals("Rectangle Area") || unit.equals("Rectangle Perimeter")) {
+            input2.setVisibility(View.VISIBLE);
+        }
+
         String finalUnit = unit;
         convertButton.setOnClickListener(v -> {
-            if (!input.getText().toString().isEmpty()) {
-                double value = Double.parseDouble(input.getText().toString());
-                double converted = convertValue(finalUnit, value);
+            if (!input1.getText().toString().isEmpty()) {
+                double value1 = Double.parseDouble(input1.getText().toString());
+                double value2 = 0;
+                if (input2.getVisibility() == View.VISIBLE && !input2.getText().toString().isEmpty()) {
+                    value2 = Double.parseDouble(input2.getText().toString());
+                }
+                double converted = convertValue(finalUnit, value1, value2);
                 result.setText(String.valueOf(converted));
             }
         });
 
         backButton.setOnClickListener(v -> {
-            requireActivity()
-                    .getSupportFragmentManager()
-                    .popBackStack();
+            requireActivity().getSupportFragmentManager().popBackStack();
         });
 
         return view;
     }
 
-    private double convertValue(String unit, double value) {
+    private double convertValue(String unit, double value1, double value2) {
         switch (unit) {
             case "Метры → Сантиметры":
             case "Meters → Centimeters":
-                return value * 100;
-
+                return value1 * 100;
             case "Сантиметры → Метры":
             case "Centimeters → Meters":
-                return value / 100;
-
+                return value1 / 100;
             case "Минуты → Секунды":
             case "Minutes → Seconds":
-                return value * 60;
-
+                return value1 * 60;
             case "Секунды → Минуты":
             case "Seconds → Minutes":
-                return value / 60;
-
+                return value1 / 60;
+            case "Площадь квадрата":
+            case "Square Area":
+                return value1 * value1;
+            case "Периметр квадрата":
+            case "Square Perimeter":
+                return 4 * value1;
+            case "Площадь прямоугольника":
+            case "Rectangle Area":
+                return value1 * value2;
+            case "Периметр прямоугольника":
+            case "Rectangle Perimeter":
+                return 2 * (value1 + value2);
             default:
-                return value;
+                return value1;
         }
     }
 }

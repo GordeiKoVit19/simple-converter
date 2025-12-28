@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#888888</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="app_background">#E7E6E6</color>
+    <color name="app_button_blue">#4472C4</color>
+    <color name="app_text_white">#FFFFFF</color>
+    <color name="nav_gray">#888888</color>
+    <color name="nav_blue">#4472C4</color>
 </resources>

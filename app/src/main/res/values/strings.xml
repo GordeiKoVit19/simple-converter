@@ -8,6 +8,12 @@
     <string name="text_result">Result</string>
     <string name="back">Back\n</string>
 
+    <string name="copy_result_hint">Tap the result to copy</string>
+
+    <string name="hint_enter_value_toast">Enter a number</string>
+    <string name="hint_enter_second_value_toast">Enter the second number</string>
+    <string name="result_copied">Result copied</string>
+
     <string-array name="units_list">
         <item>Meters → Centimeters</item>
         <item>Centimeters → Meters</item>

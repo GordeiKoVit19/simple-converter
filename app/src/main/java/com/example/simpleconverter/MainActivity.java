@@ -1,12 +1,7 @@
 package com.example.simpleconverter;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.simpleconverter.databinding.ActivityMainBinding;
 import com.example.simpleconverter.fragments.FormulasFragment;
 import com.example.simpleconverter.fragments.UnitsFragment;
@@ -22,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new UnitsFragment())
-                .commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new UnitsFragment())
+                    .commit();
+        }
 
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -40,13 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             return false;
-        });
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
         });
     }
 }

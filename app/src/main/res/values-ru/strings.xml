@@ -8,6 +8,12 @@
     <string name="text_result">Результат</string>
     <string name="back">Назад</string>
 
+    <string name="copy_result_hint_ru">Нажмите на результат, чтобы скопировать его</string>
+
+    <string name="hint_enter_value_toast">Введите число</string>
+    <string name="hint_enter_second_value_toast">Введите второе число</string>
+    <string name="result_copied">Результат скопирован</string>
+
     <string-array name="units_list">
         <item>Метры → Сантиметры</item>
         <item>Сантиметры → Метры</item>

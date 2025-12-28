@@ -4,15 +4,13 @@
     <string name="formulas">Формулы</string>
 
     <string name="hint_enter_value">Введите число</string>
+    <string name="hint_enter_second_value_toast">Введите второе число</string>
+    <string name="invalid_input_toast">Введите корректное число</string>
     <string name="button_convert">Конвертировать</string>
     <string name="text_result">Результат</string>
-    <string name="back">Назад</string>
-
-    <string name="copy_result_hint_ru">Нажмите на результат, чтобы скопировать его</string>
-
-    <string name="hint_enter_value_toast">Введите число</string>
-    <string name="hint_enter_second_value_toast">Введите второе число</string>
+    <string name="copy_result_hint">Нажмите на результат, чтобы скопировать</string>
     <string name="result_copied">Результат скопирован</string>
+    <string name="back">Назад</string>
 
     <string-array name="units_list">
         <item>Метры → Сантиметры</item>
@@ -27,5 +25,4 @@
         <item>Площадь прямоугольника</item>
         <item>Периметр прямоугольника</item>
     </string-array>
-
 </resources>

@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,13 @@ public class ConversionFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentConversionBinding.inflate(inflater, container, false);
 
+        binding.getRoot().setPadding(
+                binding.getRoot().getPaddingLeft(),
+                50,
+                binding.getRoot().getPaddingRight(),
+                binding.getRoot().getPaddingBottom()
+        );
+
         if (getArguments() != null) {
             unit = getArguments().getString(ARG_UNIT);
         }
@@ -49,7 +57,11 @@ public class ConversionFragment extends Fragment {
 
         viewModel.getResult().observe(getViewLifecycleOwner(), res -> {
             if (res != null) {
-                binding.textViewResult.setText(String.valueOf(res));
+                if (res == Math.floor(res)) {
+                    binding.textViewResult.setText(String.valueOf(res.intValue()));
+                } else {
+                    binding.textViewResult.setText(String.valueOf(res));
+                }
             } else {
                 binding.textViewResult.setText(getString(R.string.text_result));
             }
@@ -64,12 +76,19 @@ public class ConversionFragment extends Fragment {
         }
 
         binding.buttonConvert.setOnClickListener(v -> {
-            String val1Text = binding.editTextValue1.getText().toString();
-            String val2Text = binding.editTextValue2.getText().toString();
+            String val1Text = binding.editTextValue1.getText().toString().trim();
+            String val2Text = binding.editTextValue2.getText().toString().trim();
 
             if (val1Text.isEmpty()) {
                 Toast.makeText(getContext(),
                         getString(R.string.hint_enter_value),
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!isValidNumber(val1Text)) {
+                Toast.makeText(getContext(),
+                        getString(R.string.invalid_input_toast),
                         Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -83,9 +102,14 @@ public class ConversionFragment extends Fragment {
                             getString(R.string.hint_enter_second_value_toast),
                             Toast.LENGTH_SHORT).show();
                     return;
-                } else {
-                    value2 = Double.parseDouble(val2Text);
                 }
+                if (!isValidNumber(val2Text)) {
+                    Toast.makeText(getContext(),
+                            getString(R.string.invalid_input_toast),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                value2 = Double.parseDouble(val2Text);
             }
 
             viewModel.convert(unit, value1, value2);
@@ -106,5 +130,16 @@ public class ConversionFragment extends Fragment {
         binding.buttonBack.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
         return binding.getRoot();
+    }
+
+    private boolean isValidNumber(String input) {
+        if (TextUtils.isEmpty(input)) return false;
+        if (input.startsWith(".") || (input.startsWith("0") && input.length() > 1)) return false;
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

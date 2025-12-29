@@ -2,9 +2,9 @@
     <item
         android:id="@+id/nav_units"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Единицы" />
+        android:title="@string/units" />
     <item
         android:id="@+id/nav_formulas"
         android:icon="@android:drawable/ic_menu_agenda"
-        android:title="Формулы" />
+        android:title="@string/formulas" />
 </menu>

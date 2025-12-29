@@ -40,13 +40,6 @@ public class ConversionFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentConversionBinding.inflate(inflater, container, false);
 
-        binding.getRoot().setPadding(
-                binding.getRoot().getPaddingLeft(),
-                50,
-                binding.getRoot().getPaddingRight(),
-                binding.getRoot().getPaddingBottom()
-        );
-
         if (getArguments() != null) {
             unit = getArguments().getString(ARG_UNIT);
         }
